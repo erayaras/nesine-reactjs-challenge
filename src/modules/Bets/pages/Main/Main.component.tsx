@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchData } from '../../../../services/dataService';
+import { fetchBets } from '../../../../services/betsService';
 
 const Main: React.FC = () => {
     const [data, setData] = useState<any[]>([]);
@@ -9,7 +9,7 @@ const Main: React.FC = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const result = await fetchData();
+                const result = await fetchBets();
                 setData(result);
                 console.log(result);
             } catch (err) {
