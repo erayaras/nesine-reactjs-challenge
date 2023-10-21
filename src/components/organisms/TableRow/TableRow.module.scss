@@ -1,0 +1,19 @@
+.rowContainer {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.firstColumn {
+  width: 400px;
+}
+
+.secondColumn {
+  width: 100px;
+}
+
+.otherColumns {
+  width: calc(
+    (100% - 500px) / 17
+  ); // Subtracting the combined width of first and second column
+}
