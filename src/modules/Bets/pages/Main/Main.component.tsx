@@ -29,17 +29,12 @@ const Main: React.FC = () => {
 
     return (
         <div>
-            {data.map((entry, index) => (
-                <TableRow
-                    key={index}
-                    data={{
-                        header: [],
-                        content: []
-                    }}
-                />
+            {data.map((bet, index) => (
+                <TableRow key={index} bet={bet} />
             ))}
         </div>
     );
+
 };
 
 export default Main;
