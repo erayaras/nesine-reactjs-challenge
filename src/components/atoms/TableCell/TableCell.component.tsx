@@ -39,8 +39,8 @@ const TableCell: React.FC<TableCellProps> = ({ content, bet, isO, isStickyHeader
     // Determine the CSS classes for the TableCell based on the selection state and the nature of the data (bet or not)
     const cellClassNames = (bet && isO && index !== undefined)
         ? isSelected(bet.C, index)
-            ? `${styles.cell} ${styles.cellSelected}`
-            : styles.cell
+            ? `${styles.cell} ${styles.cellSelected} ${styles.cellClickable}`
+            : `${styles.cell} ${styles.cellClickable}`
         : styles.cell;
 
     // If the cell is part of the sticky header and it's the first cell, apply a centered style
