@@ -1,5 +1,6 @@
 .cell {
   border: 1px solid #ccc;
+  border-top: none;
 
   &:not(:first-child) {
     text-align: center;
