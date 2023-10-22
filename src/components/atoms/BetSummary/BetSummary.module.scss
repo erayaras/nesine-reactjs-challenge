@@ -1,0 +1,33 @@
+.betBox {
+  width: 500px;
+  height: auto;
+  min-height: 20px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.betBox > div:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.betLine {
+  display: flex;
+  align-items: center;
+}
+
+.preMatchContent {
+  flex-shrink: 0;
+  width: 100px;
+}
+
+.matchName {
+  margin-right: 10px;
+}

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { fetchBets } from '../../../../services//bets/betsService';
 import TableRow from '../../../../components/organisms/TableRow/TableRow.component';
+import BetSummary from '../../../../components/atoms/BetSummary/BetSummary.component';
 import { Bet } from '../../../../services/bets/bets.types';
 
 const Main: React.FC = () => {
+
     const [data, setData] = useState<Bet[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
@@ -32,6 +34,7 @@ const Main: React.FC = () => {
             {data.map((bet, index) => (
                 <TableRow key={index} bet={bet} />
             ))}
+            <BetSummary />
         </div>
     );
 

@@ -1,3 +1,5 @@
+import { Bet } from './../../../services/bets/bets.types';
+
 export type TableContentProps = {
-    contents: (string | number)[];
+    bet: Bet;
 };

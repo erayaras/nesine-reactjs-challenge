@@ -1,3 +1,5 @@
-export interface TableHeaderProps {
-    headers: string[];
-}
+import { Bet } from './../../../services/bets/bets.types';
+
+export type TableHeaderProps = {
+    bet: Bet;
+};
