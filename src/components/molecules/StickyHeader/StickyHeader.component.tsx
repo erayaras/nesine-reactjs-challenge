@@ -16,7 +16,8 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ totalEventCount }) => {
             <thead>
                 <tr>
                     {headers.map((header, index) => (
-                        <TableCell content={header} />
+                        <TableCell content={header} isStickyHeader index={index} />
+
                     ))}
                 </tr>
             </thead>

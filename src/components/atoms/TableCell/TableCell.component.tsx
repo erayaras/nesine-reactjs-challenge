@@ -3,7 +3,7 @@ import { TableCellProps } from './TableCell.props';
 import styles from './TableCell.module.scss';
 import { useBet } from '../../../contexts/BetContext';
 
-const TableCell: React.FC<TableCellProps> = ({ content, bet, isO, index }) => {
+const TableCell: React.FC<TableCellProps> = ({ content, bet, isO, isStickyHeader, index }) => {
     const { state, dispatch } = useBet();
 
     /**
@@ -43,11 +43,14 @@ const TableCell: React.FC<TableCellProps> = ({ content, bet, isO, index }) => {
             : styles.cell
         : styles.cell;
 
+    // If the cell is part of the sticky header and it's the first cell, apply a centered style
+    const stickyHeaderStyle = isStickyHeader && index === 0 ? styles.cellCentered : '';
+
     return (
         <td
             // Attach the click handler if the cell represents a bet option
             onClick={bet && isO ? handleBetClick : undefined}
-            className={cellClassNames}
+            className={`${cellClassNames} ${stickyHeaderStyle}`}
         >
             {content}
         </td>
