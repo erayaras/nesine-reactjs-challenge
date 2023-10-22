@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { fetchBets } from '../../../../services//bets/betsService';
-import TableRow from '../../../../components/organisms/TableRow/TableRow.component';
 import BetSummary from '../../../../components/atoms/BetSummary/BetSummary.component';
+import StickyHeader from '../../../../components/molecules/StickyHeader/StickyHeader.component';
+import TableRow from '../../../../components/organisms/TableRow/TableRow.component';
 import { Bet } from '../../../../services/bets/bets.types';
+import { fetchBets } from '../../../../services/bets/betsService';
 
 const Main: React.FC = () => {
 
@@ -31,6 +32,7 @@ const Main: React.FC = () => {
 
     return (
         <div>
+            <StickyHeader totalEventCount={data.length} />
             {data.map((bet, index) => (
                 <TableRow key={index} bet={bet} />
             ))}

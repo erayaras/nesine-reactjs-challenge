@@ -1,0 +1,25 @@
+.stickyHeader {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-color: #bbb3b3;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 60px;
+  td {
+    padding: 0px 10px;
+  }
+}
+
+.firstColumn {
+  width: 400px;
+}
+
+.secondColumn {
+  width: 100px;
+}
+
+.otherColumns {
+  width: calc((100% - 500px) / 17);
+}

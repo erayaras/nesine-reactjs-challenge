@@ -11,7 +11,7 @@ const TableRow: React.FC<TableRowProps> = ({ bet }) => {
             <colgroup>
                 <col className={styles.firstColumn} />
                 <col className={styles.secondColumn} />
-                <col className={styles.otherColumns} span={18} />
+                <col className={styles.otherColumns} span={17} />
             </colgroup>
             <TableHeader bet={bet} />
             <TableContent bet={bet} />
