@@ -16,7 +16,6 @@ const Main: React.FC = () => {
             try {
                 const result = await fetchBets();
                 setData(result);
-                console.log(result);
             } catch (err) {
                 setError(err as Error);
             } finally {
