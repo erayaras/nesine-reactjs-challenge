@@ -1,4 +1,4 @@
-# **Nesine ReactJS Challenge: Bet System**
+# **Nesine React.JS Challenge: Bet System**
 
 ## **Introduction**
 
@@ -41,13 +41,13 @@ The state of selected bets and potential returns is managed using the Context AP
 - **Reducer:** Manages bet state modifications.
 - **Bet Provider:** Offers state and dispatch functions to component tree.
 
-### **Atomic Design Approach**
-
-I structured the UI components following the Atomic Design methodology, which breaks down UI components into atoms, molecules, organisms, templates, and pages. This hierarchical structure promotes consistency, reusability, and maintainability.
-
 ### **Data Fetching with Axios**
 
 I chose Axios for data fetching due to its automatic error handling, built-in timeout feature, and broader browser compatibility over Fetch.
+
+### **Atomic Design Approach**
+
+I structured the UI components following the Atomic Design methodology, which breaks down UI components into atoms, molecules, organisms, templates, and pages. This hierarchical structure promotes consistency, reusability, and maintainability.
 
 ### **Modular Design: Feature-based Structure**
 
