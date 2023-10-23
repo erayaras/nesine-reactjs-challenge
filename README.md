@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# **Nesine ReactJS Challenge: Bet System**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Introduction**
 
-## Available Scripts
+This project showcases a frontend implementation of a betting application. Emphasis was placed on performance optimization, state management, modular and atomic design, along with the robustness of TypeScript for type-safety and enhanced developer experience and best practices in React development.
 
-In the project directory, you can run:
+## **Key Features & Decisions**
 
-### `npm start`
+### **Performance Enhancement with `react-window`**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To enhance the app's performance, I integrated the `react-window` library. This library optimizes rendering for large lists and tabular data by only rendering items that fit the screen, drastically reducing the number of DOM nodes created and speeding up the rendering process.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Performance Metrics (Lighthouse Scores)**
 
-### `npm test`
+- **Mobile**:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - Before `react-window`:
+    - Performance: 46
+    - Total Blocking Time: 18,270 ms
+    - Speed Index: 5.3 s
+  - After `react-window`:
+    - Performance: 72
+    - Total Blocking Time: 330 ms
+    - Speed Index: 1.5 s
 
-### `npm run build`
+- **Desktop**:
+  - Before `react-window`:
+    - Performance: 65
+    - Total Blocking Time: 4,250 ms
+    - Speed Index: 1.6s
+  - After `react-window`:
+    - Performance: 94
+    - Total Blocking Time: 0 ms
+    - Speed Index: 0.5 s
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **State Management: Context API**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The state of selected bets and potential returns is managed using the Context API. The `useBet` hook provides access to shared state and dispatch functions across components.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Bet Context:** Central hub for shared state and actions.
+- **Reducer:** Manages bet state modifications.
+- **Bet Provider:** Offers state and dispatch functions to component tree.
 
-### `npm run eject`
+### **Atomic Design Approach**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I structured the UI components following the Atomic Design methodology, which breaks down UI components into atoms, molecules, organisms, templates, and pages. This hierarchical structure promotes consistency, reusability, and maintainability.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **Data Fetching with Axios**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I chose Axios for data fetching due to its automatic error handling, built-in timeout feature, and broader browser compatibility over Fetch.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### **Modular Design: Feature-based Structure**
 
-## Learn More
+The project uses a feature-based design, ensuring clarity, scalability, and separation of concerns. All related functionalities for a domain, like bets, are grouped into distinct modules.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### **TableCell Component: Avoiding Anonymous Functions**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+For performance optimization in the TableCell component, I used named functions over anonymous ones, enhancing readability and reducing unnecessary re-renders.
+
+### **Higher Order Components (HOCs) for TableCell Logic & Styling**
+
+- **Centralize Logic for Clickability:** I encapsulated the logic to determine whether a cell is clickable (based on bet data, its type, and index) within the HOC.
+- **Consistent Styling:** Using HOCs, each cell, irrespective of its content or type, receives consistent styles, thus promoting a harmonious user experience across the table.
+- **Flexibility:** The HOC structure offers the flexibility to easily wrap any cell component, allowing for adaptability and ease of future modifications.
+
+In essence, by using an HOC, I centralized the decision-making and styling logic for the table cells, making the codebase more maintainable and scalable.
+
+## **Conclusion**
+
+The 'nesine-reactjs-challenge' is a testament to effective React and TypeScript development, focusing on state management, performance, and a structured design approach. The architecture is poised for scalability, maintainability, and an optimal user experience.
