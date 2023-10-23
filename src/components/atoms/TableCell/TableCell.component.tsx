@@ -12,7 +12,7 @@ const TableCell: React.FC<TableCellProps> = ({ content, bet, isO, isStickyHeader
      * it dispatches either the ADD_BET or REMOVE_BET action based on the current state.
      */
     const handleBetClick = () => {
-        if (bet && bet.OCG && bet.OCG[1] && index !== undefined) { // Added a check for index !== undefined
+        if (bet && bet.OCG && bet.OCG[1] && index !== undefined && (typeof content === 'string' || typeof content === 'number')) {
             const MBS = bet.OCG[1].MBS;
             const { C, N } = bet; // Extracting the required C and N properties from the bet object
             const parsedO = parseFloat(content.toString());
@@ -33,7 +33,10 @@ const TableCell: React.FC<TableCellProps> = ({ content, bet, isO, isStickyHeader
      * @returns {boolean} - Returns true if the bet is selected, otherwise false.
      */
     const isSelected = (C: string, index: number) => {
-        return state.selectedBets.some(b => b.C === C && b.O === parseFloat(content.toString()) && b.index === index); // Ensure content is a string
+        if (typeof content === 'string' || typeof content === 'number') {
+            return state.selectedBets.some(b => b.C === C && b.O === parseFloat(content.toString()) && b.index === index);
+        }
+        return false;
     };
 
     // Determine the CSS classes for the TableCell based on the selection state and the nature of the data (bet or not)

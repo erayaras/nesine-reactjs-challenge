@@ -52,7 +52,7 @@ const Main: React.FC = () => {
             <List
                 height={viewportHeight}  // Set to the viewport height
                 itemCount={data.length}
-                itemSize={53} // Average height of a row
+                itemSize={54} // Average height of a row
                 width="100%"
             >
                 {Row}
