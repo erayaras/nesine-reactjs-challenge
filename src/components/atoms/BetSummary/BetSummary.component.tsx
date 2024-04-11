@@ -1,26 +1,43 @@
 import React from 'react';
 import { useBet } from './../../../contexts/BetContext';
 import styles from './BetSummary.module.scss';
-
+import { Bet } from '../../../services/bets/bets.types';
 const BetSummary: React.FC = () => {
-  const { state } = useBet();
+  const { state, dispatch } = useBet();
+
+  const handleCartItemDelete = (bet: any) => {
+    if (bet) {
+      const MBS = bet.MBS;
+      const ID = bet.ID;
+      const { C, N } = bet; // Extracting the required C and N properties from the bet object
+      const parsedO = parseFloat(bet.O.toString());
+
+
+      dispatch({ type: 'REMOVE_BET', payload: { MBS, C, N, O: parsedO, ID } });
+    }
+  };
 
   return (
     <div className={styles.betBox}>
       {state.selectedBets.map((bet, index) => (
-        <div key={index} className={styles.betLine}>
-          <div className={styles.preMatchContent}>
-            {bet.MBS} Kod: {bet.C}
+        <div className={styles.betLine}>
+          <div onClick={() => handleCartItemDelete(bet)}>
+            x
           </div>
-          <div className={styles.matchName}>
-            Maç: {bet.N}
+          <div key={index} className={styles.bet}>
+            <div className={styles.preMatchContent}>
+              {bet.MBS} Kod: {bet.C}
+            </div>
+            <div className={styles.matchName}>
+              Maç: {bet.N}
+            </div>
+            <strong>
+              Oran: {bet.O}
+            </strong>
           </div>
-          <strong>
-            Oran: {bet.O}
-          </strong>
         </div>
       ))}
-      <div>Toplam Tutar: {state.totalAmount} TL</div>
+      <div >Toplam Tutar: {state.totalAmount} TL</div>
     </div>
   );
 };

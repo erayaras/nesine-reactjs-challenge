@@ -14,13 +14,14 @@ const TableCell: React.FC<TableCellProps> = ({ content, bet, isO, isStickyHeader
     const handleBetClick = () => {
         if (bet && bet.OCG && bet.OCG[1] && index !== undefined && (typeof content === 'string' || typeof content === 'number')) {
             const MBS = bet.OCG[1].MBS;
+            const ID = bet.OCG[1].ID;
             const { C, N } = bet; // Extracting the required C and N properties from the bet object
             const parsedO = parseFloat(content.toString());
 
             if (isSelected(C, index)) {
-                dispatch({ type: 'REMOVE_BET', payload: { MBS, C, N, O: parsedO, index } });
+                dispatch({ type: 'REMOVE_BET', payload: { MBS, C, N, O: parsedO, index, ID } });
             } else {
-                dispatch({ type: 'ADD_BET', payload: { MBS, C, N, O: parsedO, index } });
+                dispatch({ type: 'ADD_BET', payload: { MBS, C, N, O: parsedO, index, ID } });
             }
         }
     };

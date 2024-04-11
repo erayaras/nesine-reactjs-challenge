@@ -5,7 +5,8 @@ type Bet = {
     C: string;
     N: string;
     O: number;
-    index: number;
+    index?: number;
+    ID: string;
 };
 
 type State = {
@@ -44,9 +45,10 @@ const betReducer = (state: State, action: Action): State => {
                 selectedBets: filteredBets,
                 totalAmount: parseFloat(multipliedTotal.toFixed(2))
             };
+
         case 'REMOVE_BET':
             const updatedBets = state.selectedBets.filter(
-                (bet) => !(bet.C === action.payload.C && bet.index === action.payload.index)
+                (bet) => !(bet.C === action.payload.C && bet.ID === action.payload.ID)
             );
 
             // Calculate the new total after removing a bet
